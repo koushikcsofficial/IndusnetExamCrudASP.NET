@@ -1,0 +1,73 @@
+﻿@using DomainModels
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+    <!-- FONT AWESOEM -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Create","Blog")"> Add Blog</a>
+        </div>
+    </nav>
+    <main class="container p-4">
+        <div class="row">
+            <div class="col-md-12">
+                @if (ViewBag.Msg != null)
+                {
+                    <div class="d-inline-flex p-2">@ViewBag.Msg</div>
+                }
+
+                <a class="btn btn-primary col-md-12" href="@Url.Action("Index","Category")" role="button">Create category</a><br /><br />
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Blog HeadLine</th>
+                            <th>Blog</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Blog_Headline</td>
+                                <td>@item.Blog_Description</td>
+                                <td>@item.Category.Category_Name</td>
+                                <td>
+                                    <a href="@Url.Action("Edit","Blog",new RouteValueDictionary { { "Id", item.Id } })" class="btn btn-secondary">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Blog",new RouteValueDictionary { { "Id", item.Id } })" class="btn btn-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- BOOTSTRAP 4 SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
+

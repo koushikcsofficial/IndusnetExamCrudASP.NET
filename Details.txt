@@ -1,0 +1,14 @@
+Name: Koushik Saha
+College:- Gargi Memorial Institute of Technology
+Email: koushik.official1999@gmail.com
+Mobile number:-7699978887
+
+Code first approach I have used for this project with Entity framework 6.4. There is no 
+sql queries inside.
+
+Project is made with tier based architecture.
+
+DatabaseContext file for code first approact is inside DataAccess layer.
+
+-----Thanks----
+
